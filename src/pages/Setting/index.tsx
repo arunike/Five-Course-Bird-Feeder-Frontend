@@ -454,34 +454,6 @@ function getStyles(name: string, personName: string[], theme: Theme) {
   };
 }
 
-// const handleSettingOptions = async () => {
-//   // Need Chrome Extension CORS Unblock to work
-//   await fetch(`http://localhost:8080/api/v1/users/login/${username}/${password}`, {
-//     method: 'GET',
-//     headers: {
-//     }
-//     })
-//     .then((response) => {
-//       if (response.status === 200) {
-//         return response.text();
-//       }
-//       else {
-//         throw new Error('Login failed');
-//       }
-//     })
-//     .then((data) => {
-//       console.log(data);
-//       if(data === "success")
-//         navigate('/home/index');
-//       else if(data === "userDNE")
-//         MessagePlugin.error('User does not exist');
-//       else if(data === "wrong_password")
-//         MessagePlugin.error('Wrong password');
-//       return data;
-//     }
-//   );
-// };
-
 const Home: React.FC<BrowserRouterProps> = () => {
   const theme = useTheme();
   const [birdName, setBirdName] = React.useState<string[]>([]);

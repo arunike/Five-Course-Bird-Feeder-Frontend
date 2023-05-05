@@ -67,25 +67,34 @@
 </p>
 
 ## How to Run
-<p> 
-    <ol type="1">
-        <li>Clone the repository</li>
-            ```
-            git clone
-            ```
-        <li>Run the API</li>
-        <li>Have Docker on your machine</li>
-            <ul>
-                <li>Install Docker</li>
-                <li>Run Docker</li>
-            </ul>
-        <li>Install dependencies</li>
-            ```
-            npm install
-            ```
-        <li>Run the application</li>
-            ```
-            npm run dev
-            ```
-    </ol>
-</p>
+<ol type="1">
+<li>Clone the repository</li>
+
+```
+git clone https://github.com/arunike/CS506-Frontend.git
+```
+
+<li> <a href="https://github.com/arunike/CS506-API" target="blank">Run the API</a> </li>
+<li>Have Docker on your machine</li>
+    <ul>
+        <li> <a href="https://www.docker.com/" target="blank">Install Docker</a> </li>
+        <li>Open Docker</li>
+    </ul>
+<li>Install dependencies</li>
+
+```
+npm install
+```
+
+<li>Enable CORS Unblock Extension</a> </li>
+    <ul>
+        <li> <a href="https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="blank">Install CORS Unblock Extension</a> </li>
+        <li>Activate CORS Unblock Extension</li>
+    </ul>
+
+<li>Run the application</li>
+
+```
+npm run dev
+```
+</ol>
