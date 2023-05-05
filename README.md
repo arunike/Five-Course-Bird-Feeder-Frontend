@@ -2,8 +2,8 @@
 
 ## Description
 <p> Projects I did in COMP SCI 506: Software Engineering
-  <li> <b>Project Frontend <a href="https://github.com/arunike/CS506-Frontend" target="blank">Five Course Bird Feeder Frontend</a> </b> </li> 
-  <li> <b>Project API <a href="https://github.com/arunike/CS506-API" target="blank">Five Course Bird Feeder API</a> </b> </li>
+  <li> <b>Project Frontend: <a href="https://github.com/arunike/CS506-Frontend" target="blank">Five Course Bird Feeder Frontend</a> </b> </li> 
+  <li> <b>Project API: <a href="https://github.com/arunike/CS506-API" target="blank">Five Course Bird Feeder API</a> </b> </li>
 </p>
 
 ## About
@@ -64,3 +64,28 @@
                 <li>Working in progress</li>
             </ul>
     </ol>
+</p>
+
+## How to Run
+<p> 
+    <ol type="1">
+        <li>Clone the repository</li>
+            ```
+            git clone
+            ```
+        <li>Run the API</li>
+        <li>Have Docker on your machine</li>
+            <ul>
+                <li>Install Docker</li>
+                <li>Run Docker</li>
+            </ul>
+        <li>Install dependencies</li>
+            ```
+            npm install
+            ```
+        <li>Run the application</li>
+            ```
+            npm run dev
+            ```
+    </ol>
+</p>
