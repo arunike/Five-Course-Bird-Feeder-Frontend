@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Button } from 'tdesign-react';
+import { Button } from 'antd';
 
 import Light403Icon from 'assets/svg/assets-result-403.svg?component';
 import Light404Icon from 'assets/svg/assets-result-404.svg?component';
@@ -8,7 +8,7 @@ import style from './index.module.less';
 
 enum ECode {
   forbidden = 403,
-  notFount = 404,
+  notFount = 404, // Typo in original file preserved for compatibility if used elsewhere, but ideally fix. Assuming internal use.
   error = 500,
 }
 
@@ -43,7 +43,7 @@ const ErrorPage: React.FC<IErrorPageProps> = (props) => {
       {info?.icon}
       <div className={style.title}>{info?.title}</div>
       <div className={style.description}>{info?.desc}</div>
-      <Button theme='primary'>Back Home</Button>
+      <Button type='primary' onClick={() => window.location.href = '/'}>Back Home</Button>
     </div>
   );
 };

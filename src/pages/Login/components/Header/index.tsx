@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'tdesign-react';
-import { LogoGithubIcon, HelpCircleIcon, SettingIcon } from 'tdesign-icons-react';
+import { Button } from 'antd';
+import { GithubOutlined, QuestionCircleOutlined, SettingOutlined } from '@ant-design/icons';
 import { useAppDispatch } from 'modules/store';
 import { toggleSetting } from 'modules/global';
 
@@ -11,15 +11,7 @@ export default function Header() {
   const dispatch = useAppDispatch();
 
   const navToGitHub = () => {
-    window.open('https://github.com/arunike');
-  };
-
-  const navToHelper = () => {
-    window.open('https://github.com/arunike');
-  };
-
-  const toggleSettingPanel = () => {
-    dispatch(toggleSetting());
+    window.open('https://github.com/arunike/Five-Course-Bird-Feeder-Frontend');
   };
 
   return (
@@ -29,31 +21,11 @@ export default function Header() {
         <div className={Style.operationsContainer}>
           <Button
             className={Style.operationsButton}
-            theme='default'
-            shape='square'
-            variant='text'
+            type='text'
+            shape='default'
             onClick={navToGitHub}
-          >
-            <LogoGithubIcon className={Style.icon} />
-          </Button>
-          <Button
-            className={Style.operationsButton}
-            theme='default'
-            shape='square'
-            variant='text'
-            onClick={navToHelper}
-          >
-            <HelpCircleIcon className={Style.icon} />
-          </Button>
-          <Button
-            className={Style.operationsButton}
-            theme='default'
-            shape='square'
-            variant='text'
-            onClick={toggleSettingPanel}
-          >
-            <SettingIcon className={Style.icon} />
-          </Button>
+            icon={<GithubOutlined className={Style.icon} />}
+          />
         </div>
       </header>
     </div>

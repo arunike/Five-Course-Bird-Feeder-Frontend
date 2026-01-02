@@ -1,3 +1,172 @@
+:root {
+  --td-bg-color-page: #f0f2f5;
+  --td-bg-color-container: #ffffff;
+  --td-text-color-primary: rgba(0, 0, 0, 0.9);
+  --td-text-color-secondary: rgba(0, 0, 0, 0.6);
+  --td-text-color-placeholder: rgba(0, 0, 0, 0.4);
+  --td-text-color-anti: #ffffff;
+  --td-text-color-brand: #ffffff;
+  --td-gray-color-3: #e7e7e7;
+  --td-error-color-2: #ffccc7;
+  --td-success-color-2: #b7eb8f;
+}
+
+// Default (Light Mode) Overrides
+.ant-layout-header {
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.85);
+
+  .anticon {
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+:root[theme-mode=dark] {
+  --td-bg-color-page: #000000;
+  --td-bg-color-container: #141414;
+  --td-text-color-primary: rgba(255, 255, 255, 0.85);
+  --td-text-color-secondary: rgba(255, 255, 255, 0.45);
+  --td-text-color-placeholder: rgba(255, 255, 255, 0.3);
+  --td-text-color-anti: #000000;
+  --td-gray-color-3: #303030;
+  --td-error-color-2: #5c0011;
+  --td-success-color-2: #135200;
+
+  // Global & Layout
+  body {
+    background-color: var(--td-bg-color-page);
+    color: var(--td-text-color-primary);
+  }
+
+  .ant-layout {
+    background: var(--td-bg-color-page);
+  }
+
+  .ant-layout-header {
+    background: #001529;
+    color: #ffffff;
+
+    .anticon {
+      color: #ffffff;
+    }
+
+    .ant-btn {
+      color: #ffffff;
+
+      &:hover,
+      &:focus {
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+
+    span {
+      color: #ffffff;
+    }
+  }
+
+  .ant-layout-sider {
+    background: #001529;
+
+    .ant-menu {
+      background: #001529;
+      color: #ffffff;
+
+      .ant-menu-item,
+      .ant-menu-submenu-title {
+        color: #ffffff;
+
+        .anticon {
+          color: #ffffff;
+        }
+
+        a {
+          color: #ffffff;
+        }
+      }
+
+      .ant-menu-item-selected {
+        color: #ffffff;
+        background-color: #1890ff; // Keep selected item distinct if needed, or rely on transparent
+      }
+    }
+  }
+
+  .ant-layout-footer {
+    background: var(--td-bg-color-page);
+    color: var(--td-text-color-secondary);
+  }
+
+  .ant-layout-content {
+    background: var(--td-bg-color-page);
+  }
+
+  // Drawer (Settings)
+  .ant-drawer-content,
+  .ant-drawer-header,
+  .ant-drawer-body {
+    background: var(--td-bg-color-container);
+    color: var(--td-text-color-primary);
+    border-bottom: 1px solid var(--td-gray-color-3);
+  }
+
+  .ant-drawer-title,
+  .ant-drawer-close {
+    color: var(--td-text-color-primary);
+  }
+
+  // Cards
+  .ant-card {
+    background: var(--td-bg-color-container);
+    color: var(--td-text-color-primary);
+    border-color: var(--td-gray-color-3);
+  }
+
+  .ant-card-head {
+    color: var(--td-text-color-primary);
+    border-bottom-color: var(--td-gray-color-3);
+  }
+
+  // Typography
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  .ant-typography {
+    color: var(--td-text-color-primary);
+  }
+
+  // Descriptions
+  .ant-descriptions-title {
+    color: var(--td-text-color-primary);
+  }
+
+  .ant-descriptions-item-label {
+    color: var(--td-text-color-secondary);
+  }
+
+  .ant-descriptions-item-content {
+    color: var(--td-text-color-primary);
+  }
+
+  // Modal
+  .ant-modal-content,
+  .ant-modal-header {
+    background-color: var(--td-bg-color-container);
+    color: var(--td-text-color-primary);
+  }
+
+  .ant-modal-title,
+  .ant-modal-close,
+  .ant-modal-close-x {
+    color: var(--td-text-color-primary);
+  }
+
+  .ant-modal-footer {
+    border-top-color: var(--td-gray-color-3);
+  }
+}
+
 :root[theme-color=cyan] {
   --td-brand-color: #0594fa;
   --td-brand-color-1: #d7eefe;
@@ -191,4 +360,52 @@ root[theme-color=purple][theme-mode=dark] {
   --td-brand-color-8: #ab87d5;
   --td-brand-color-9: #ccb6e6;
   --td-brand-color-10: #eee6f7;
+}
+
+// Global Theme Color Overrides
+.ant-btn-primary {
+  background-color: var(--td-brand-color);
+  border-color: var(--td-brand-color);
+
+  &:hover,
+  &:focus {
+    background-color: var(--td-brand-color-5);
+    border-color: var(--td-brand-color-5);
+  }
+}
+
+.ant-switch-checked {
+  background-color: var(--td-brand-color);
+}
+
+.ant-radio-wrapper-checked .ant-radio-inner {
+  border-color: var(--td-brand-color);
+
+  &::after {
+    background-color: var(--td-brand-color);
+  }
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--td-brand-color);
+  border-color: var(--td-brand-color);
+}
+
+a {
+  color: var(--td-brand-color);
+
+  &:hover {
+    color: var(--td-brand-color-5);
+  }
+}
+
+// Light menu selected item (exclude dark mode which handles itself)
+.ant-menu-light .ant-menu-item-selected {
+  color: var(--td-brand-color);
+  background-color: var(--td-brand-color-1);
+}
+
+// Global Switch overrides (add border for better visibility)
+.ant-switch {
+  border: 1px solid var(--td-gray-color-3);
 }

@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react';
-import { Drawer, Layout } from 'tdesign-react';
+import { Drawer, Layout } from 'antd';
 import throttle from 'lodash/throttle';
 import { useAppSelector, useAppDispatch } from 'modules/store';
 import { selectGlobal, toggleSetting, toggleMenu, ELayout, switchTheme } from 'modules/global';
@@ -34,9 +34,9 @@ export default memo(() => {
       <Drawer
         destroyOnClose
         visible={globalState.setting}
-        size='458px'
+        width={458}
         footer={false}
-        header='Page setting'
+        title='Page setting'
         onClose={() => dispatch(toggleSetting())}
       >
         <Setting />

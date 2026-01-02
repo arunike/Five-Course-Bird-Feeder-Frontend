@@ -1,11 +1,13 @@
 import React, { memo } from 'react';
-import { Row, Col, Switch } from 'tdesign-react';
+import { Row, Col, Switch } from 'antd';
 import { useAppDispatch, useAppSelector } from 'modules/store';
 import {
   selectGlobal,
   toggleShowHeader,
   toggleShowBreadcrumbs,
   toggleShowFooter,
+  toggleColorWeakness,
+  toggleGrayMode,
   switchTheme,
   switchColor,
   switchLayout,
@@ -71,6 +73,8 @@ export default memo(() => {
     }
   };
 
+  const rowStyle = { marginBottom: 16 };
+
   return (
     <div>
       <div className={Style.settingTitle}>Theme Mode</div>
@@ -91,30 +95,40 @@ export default memo(() => {
       />
 
       <div className={Style.settingTitle}>Elemental Switch</div>
-      <Row justify='space-between'>
+      <Row justify='space-between' style={rowStyle} align="middle">
         <Col>
           <div className={Style.settingSubTitle}>Show Header</div>
         </Col>
         <Col>
-          <Switch size='large' value={globalState.showHeader} onChange={() => dispatch(toggleShowHeader())} />
+          <Switch checked={globalState.showHeader} onChange={() => dispatch(toggleShowHeader())} />
         </Col>
       </Row>
 
-      <Row justify='space-between'>
+      <Row justify='space-between' style={rowStyle} align="middle">
         <Col>
           <div className={Style.settingSubTitle}>Show Breadcrumbs</div>
         </Col>
         <Col>
-          <Switch size='large' value={globalState.showBreadcrumbs} onChange={() => dispatch(toggleShowBreadcrumbs())} />
+          <Switch checked={globalState.showBreadcrumbs} onChange={() => dispatch(toggleShowBreadcrumbs())} />
         </Col>
       </Row>
 
-      <Row justify='space-between'>
+      <div className={Style.settingTitle}>Accessibility</div>
+      <Row justify='space-between' style={rowStyle} align="middle">
         <Col>
-          <div className={Style.settingSubTitle}>Show Footer</div>
+          <div className={Style.settingSubTitle}>Color Weakness Mode</div>
         </Col>
         <Col>
-          <Switch size='large' value={globalState.showFooter} onChange={() => dispatch(toggleShowFooter())} />
+          <Switch checked={globalState.colorWeakness} onChange={() => dispatch(toggleColorWeakness())} />
+        </Col>
+      </Row>
+
+      <Row justify='space-between' style={rowStyle} align="middle">
+        <Col>
+          <div className={Style.settingSubTitle}>Gray Mode</div>
+        </Col>
+        <Col>
+          <Switch checked={globalState.grayMode} onChange={() => dispatch(toggleGrayMode())} />
         </Col>
       </Row>
     </div>

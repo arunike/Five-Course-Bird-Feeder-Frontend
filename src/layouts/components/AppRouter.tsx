@@ -1,6 +1,6 @@
 import React, { Suspense, memo } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Layout, Loading } from 'tdesign-react';
+import { Layout, Spin } from 'antd';
 import routers, { IRouter } from 'router';
 import { resolve } from 'utils/path';
 import Page from './Page';
@@ -37,7 +37,7 @@ const renderRoutes: TRenderRoutes = (routes, parentPath = '', breadcrumb = []) =
         />
       );
     }
-    
+
     return children ? renderRoutes(children, currentPath, currentBreadcrumb) : null;
   });
 
@@ -46,7 +46,7 @@ const AppRouter = () => (
     <Suspense
       fallback={
         <div className={Style.loading}>
-          <Loading />
+          <Spin size="large" />
         </div>
       }
     >

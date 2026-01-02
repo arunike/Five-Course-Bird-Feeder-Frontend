@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from 'tdesign-react';
+import { Layout } from 'antd';
 import { ELayout } from 'modules/global';
 import Header from './Header';
 import Footer from './Footer';

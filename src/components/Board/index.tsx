@@ -1,6 +1,6 @@
 import React from 'react';
-import { ChevronRightIcon } from 'tdesign-icons-react';
-import { Card } from 'tdesign-react';
+import { RightOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
 import classnames from 'classnames';
 import Style from './index.module.less';
 
@@ -52,24 +52,22 @@ export const TrendIcon = ({ trend, trendNum }: { trend?: ETrend; trendNum?: stri
 const Board = ({ title, count, desc, trend, trendNum, Icon, dark, border }: IBoardProps) => (
   <Card
     title={<div className={Style.boardTitle}>{title}</div>}
-    header
     className={classnames({
       [Style.boardPanelDark]: dark,
     })}
     bordered={border}
-    footer={
-      <div className={Style.boardItemBottom}>
-        <div className={Style.boardItemDesc}>
-          {desc}
-          <TrendIcon trend={trend} trendNum={trendNum} />
-        </div>
-        <ChevronRightIcon className={Style.boardItemIcon} />
-      </div>
-    }
+    bodyStyle={{ paddingBottom: 0 }}
   >
     <div className={Style.boardItem}>
       <div className={Style.boardItemLeft}>{count}</div>
       <div className={Style.boardItemRight}>{Icon}</div>
+    </div>
+    <div className={Style.boardItemBottom} style={{ borderTop: '1px solid #f0f0f0', paddingTop: '10px', marginTop: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className={Style.boardItemDesc} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        {desc}
+        <TrendIcon trend={trend} trendNum={trendNum} />
+      </div>
+      <RightOutlined className={Style.boardItemIcon} />
     </div>
   </Card>
 );

@@ -1,12 +1,6 @@
 import React, { lazy } from 'react';
 import { BrowserRouterProps } from 'react-router-dom';
-import statistic from './modules/statistic';
-import user from './modules/user';
-import login from './modules/login';
-import home from './modules/home';
-import setting from './modules/setting';
-import model_correction from './modules/model_correction';
-import otherRoutes from './modules/others';
+import { SlHome, SlSpeedometer, SlPeople, SlWrench, SlSettings } from "react-icons/sl";
 
 export interface IRouter {
   path: string;
@@ -25,7 +19,7 @@ export interface IRouter {
 const routes: IRouter[] = [
   {
     path: '/login',
-    Component: lazy(() => import('pages/Login')),
+    Component: lazy(() => import('pages/Login/LoginPage')),
     isFullPage: true,
     meta: {
       hidden: true,
@@ -33,10 +27,48 @@ const routes: IRouter[] = [
   },
   {
     path: '/',
-    redirect: '/login/index',
+    redirect: '/home',
+  },
+  {
+    path: '/home',
+    Component: lazy(() => import('pages/Home/HomePage')),
+    meta: {
+      title: 'Home Page',
+      Icon: SlHome,
+    },
+  },
+  {
+    path: '/dashboard',
+    Component: lazy(() => import('pages/Statistic/DashboardPage')),
+    meta: {
+      title: 'Dashboard',
+      Icon: SlSpeedometer,
+    },
+  },
+  {
+    path: '/setting',
+    Component: lazy(() => import('pages/Setting/SettingPage')),
+    meta: {
+      title: 'Setting',
+      Icon: SlWrench,
+    },
+  },
+  {
+    path: '/user',
+    Component: lazy(() => import('pages/User/UserPage')),
+    meta: {
+      title: 'Profile',
+      Icon: SlPeople,
+    },
+  },
+  {
+    path: '/admin',
+    Component: lazy(() => import('pages/Admin/AdminPage')),
+    meta: {
+      title: 'Admin Dashboard',
+      Icon: SlSettings,
+    },
   },
 ];
 
-const allRoutes = [...routes, ...home, ...statistic, ...setting, ...model_correction, ...user, ...login, ...otherRoutes];
-
-export default allRoutes;
+export default routes;

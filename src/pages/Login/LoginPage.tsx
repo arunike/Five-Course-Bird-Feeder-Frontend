@@ -9,7 +9,7 @@ import { selectGlobal } from 'modules/global';
 import Style from './index.module.less';
 import { UserContext } from '../../userContext';
 
-export default memo(() => {
+const LoginPage = () => {
   const [type, setType] = useState('login');
   const globalState = useAppSelector(selectGlobal);
   const { theme } = globalState;
@@ -41,4 +41,6 @@ export default memo(() => {
       <footer className={Style.copyright}>Copyright @ 2023 Richie. All Rights Reserved</footer>
     </div>
   );
-});
+};
+
+export default memo(LoginPage);

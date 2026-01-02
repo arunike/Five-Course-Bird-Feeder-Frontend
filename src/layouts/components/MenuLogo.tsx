@@ -12,7 +12,7 @@ export default memo((props: IProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/home/index');
+    navigate('/home');
   };
 
   return (

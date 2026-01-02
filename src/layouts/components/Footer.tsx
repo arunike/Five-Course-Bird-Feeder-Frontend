@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout, Row } from 'tdesign-react';
+import { Layout, Row } from 'antd';
 import { useAppSelector } from 'modules/store';
 import { selectGlobal } from 'modules/global';
 
-const { Footer: TFooter } = Layout;
+const { Footer: AntFooter } = Layout;
 
 const Footer = () => {
   const globalState = useAppSelector(selectGlobal);
@@ -12,9 +12,9 @@ const Footer = () => {
   }
 
   return (
-    <TFooter>
-      <Row justify='center'>Copyright @ 2023-2023 Richie. All Rights Reserved</Row>
-    </TFooter>
+    <AntFooter>
+      <Row justify='center'>Copyright @ 2023 Richie. All Rights Reserved</Row>
+    </AntFooter>
   );
 };
 

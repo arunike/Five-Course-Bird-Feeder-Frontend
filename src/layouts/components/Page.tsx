@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../modules/store';
 import { selectGlobal, switchFullPage } from '../../modules/global';
-import { Layout, Breadcrumb } from 'tdesign-react';
+import { Layout, Breadcrumb } from 'antd';
 import Style from './Page.module.less';
 
 const { Content } = Layout;
-const { BreadcrumbItem } = Breadcrumb;
 
 const Page = ({
   children,
@@ -27,7 +26,7 @@ const Page = ({
       {globalState.showBreadcrumbs && (
         <Breadcrumb className={Style.breadcrumb}>
           {breadcrumbs?.map((item, index) => (
-            <BreadcrumbItem key={index}>{item}</BreadcrumbItem>
+            <Breadcrumb.Item key={index}>{item}</Breadcrumb.Item>
           ))}
         </Breadcrumb>
       )}

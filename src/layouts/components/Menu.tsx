@@ -1,6 +1,7 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Menu, MenuValue } from 'tdesign-react';
+import { Menu, Layout } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
 import router, { IRouter } from 'router';
 import { resolve } from 'utils/path';
 import { useAppSelector } from 'modules/store';
@@ -8,14 +9,15 @@ import { selectGlobal } from 'modules/global';
 import MenuLogo from './MenuLogo';
 import Style from './Menu.module.less';
 
-const { SubMenu, MenuItem, HeadMenu } = Menu;
+const { SubMenu } = Menu;
+const { Sider } = Layout;
 
 interface IMenuProps {
   showLogo?: boolean;
   showOperation?: boolean;
 }
 
-const renderMenuItems = (menu: IRouter[], parentPath = '') => {
+const renderMenuItems = (menu: IRouter[], role: string, parentPath = '') => {
   const navigate = useNavigate();
   return menu.map((item) => {
     const { children, meta, path } = item;
@@ -24,19 +26,22 @@ const renderMenuItems = (menu: IRouter[], parentPath = '') => {
       return null;
     }
 
+    if (path === '/admin' && role !== 'admin') {
+      return null;
+    }
+
     const { Icon, title, single } = meta;
     const routerPath = resolve(parentPath, path);
 
     if (!children || children.length === 0) {
       return (
-        <MenuItem
+        <Menu.Item
           key={routerPath}
-          value={routerPath}
           icon={Icon ? <Icon /> : undefined}
           onClick={() => navigate(routerPath)}
         >
           {title}
-        </MenuItem>
+        </Menu.Item>
       );
     }
 
@@ -46,21 +51,20 @@ const renderMenuItems = (menu: IRouter[], parentPath = '') => {
         const { Icon, title } = meta;
         const singlePath = resolve(resolve(parentPath, path), firstChild.path);
         return (
-          <MenuItem
+          <Menu.Item
             key={singlePath}
-            value={singlePath}
             icon={Icon ? <Icon /> : undefined}
             onClick={() => navigate(singlePath)}
           >
             {title}
-          </MenuItem>
+          </Menu.Item>
         );
       }
     }
 
     return (
-      <SubMenu key={routerPath} value={routerPath} title={title} icon={Icon ? <Icon /> : undefined}>
-        {renderMenuItems(children, routerPath)}
+      <SubMenu key={routerPath} title={title} icon={Icon ? <Icon /> : undefined}>
+        {renderMenuItems(children, role, routerPath)}
       </SubMenu>
     );
   });
@@ -69,39 +73,48 @@ const renderMenuItems = (menu: IRouter[], parentPath = '') => {
 export const HeaderMenu = memo(() => {
   const globalState = useAppSelector(selectGlobal);
   const location = useLocation();
-  const [active, setActive] = useState<MenuValue>(location.pathname); // todo
+  const [active, setActive] = useState<string>(location.pathname);
+  const role = localStorage.getItem('role') || 'user';
 
   return (
-    <HeadMenu
-      expandType='popup'
+    <Menu
+      mode="horizontal"
       style={{ marginBottom: 20 }}
-      value={active}
-      theme={globalState.theme}
-      onChange={(v) => setActive(v)}
+      selectedKeys={[active]}
+      theme={globalState.theme === 'dark' ? 'dark' : 'light'}
+      onClick={(e) => setActive(e.key as string)}
     >
-      {renderMenuItems(router)}
-    </HeadMenu>
+      {renderMenuItems(router, role)}
+    </Menu>
   );
 });
 
 export default memo((props: IMenuProps) => {
   const location = useLocation();
   const globalState = useAppSelector(selectGlobal);
-
-  const { version } = globalState;
-  const bottomText = globalState.collapsed ? version : `Richie Design ${version}`;
+  const role = localStorage.getItem('role') || 'user';
 
   return (
-    <Menu
-      width='232px'
-      style={{ flexShrink: 0, height: '100%' }}
-      value={location.pathname}
-      theme={globalState.theme}
+    <Sider
+      width={232}
+      collapsedWidth={80}
+      trigger={null}
+      collapsible
       collapsed={globalState.collapsed}
-      operations={props.showOperation ? <div className={Style.menuTip}>{bottomText}</div> : undefined}
-      logo={props.showLogo ? <MenuLogo collapsed={globalState.collapsed} /> : undefined}
+      theme={globalState.theme === 'dark' ? 'dark' : 'light'}
     >
-      {renderMenuItems(router)}
-    </Menu>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        {props.showLogo && <MenuLogo collapsed={globalState.collapsed} />}
+        <Menu
+          mode="inline"
+          style={{ flex: 1, borderRight: 0 }}
+          selectedKeys={[location.pathname]}
+          theme={globalState.theme === 'dark' ? 'dark' : 'light'}
+          inlineCollapsed={globalState.collapsed}
+        >
+          {renderMenuItems(router, role)}
+        </Menu>
+      </div>
+    </Sider>
   );
 });

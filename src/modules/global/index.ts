@@ -26,6 +26,8 @@ export interface IGlobalState {
   showHeader: boolean;
   showBreadcrumbs: boolean;
   showFooter: boolean;
+  colorWeakness: boolean;
+  grayMode: boolean;
   chartColors: Record<string, string>;
 }
 
@@ -44,6 +46,8 @@ const initialState: IGlobalState = {
   showHeader: true,
   showBreadcrumbs: true,
   showFooter: true,
+  colorWeakness: false,
+  grayMode: false,
   chartColors: CHART_COLORS[defaultTheme],
 };
 
@@ -69,6 +73,26 @@ const globalSlice = createSlice({
     },
     toggleShowFooter: (state) => {
       state.showFooter = !state.showFooter;
+    },
+    toggleColorWeakness: (state) => {
+      state.colorWeakness = !state.colorWeakness;
+      state.grayMode = false;
+      document.documentElement.setAttribute('class', '');
+      if (state.colorWeakness) {
+        document.documentElement.style.filter = 'invert(80%)';
+      } else {
+        document.documentElement.style.filter = '';
+      }
+    },
+    toggleGrayMode: (state) => {
+      state.grayMode = !state.grayMode;
+      state.colorWeakness = false;
+      document.documentElement.setAttribute('class', '');
+      if (state.grayMode) {
+        document.documentElement.style.filter = 'grayscale(100%)';
+      } else {
+        document.documentElement.style.filter = '';
+      }
     },
     switchTheme: (state, action: PayloadAction<ETheme>) => {
       const finalTheme = action?.payload;
@@ -103,7 +127,7 @@ const globalSlice = createSlice({
       state.isFullPage = !!action?.payload;
     },
   },
-  extraReducers: () => {},
+  extraReducers: () => { },
 });
 
 export const selectGlobal = (state: RootState) => state.global;
@@ -114,6 +138,8 @@ export const {
   toggleShowHeader,
   toggleShowBreadcrumbs,
   toggleShowFooter,
+  toggleColorWeakness,
+  toggleGrayMode,
   switchTheme,
   switchColor,
   switchLayout,
