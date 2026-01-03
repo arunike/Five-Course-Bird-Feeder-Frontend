@@ -4,6 +4,7 @@ import { Layout, Spin } from 'antd';
 import routers, { IRouter } from 'router';
 import { resolve } from 'utils/path';
 import Page from './Page';
+import ProtectedRoute from 'components/ProtectedRoute';
 import Style from './AppRouter.module.less';
 
 const { Content } = Layout;
@@ -25,15 +26,25 @@ const renderRoutes: TRenderRoutes = (routes, parentPath = '', breadcrumb = []) =
     }
 
     if (Component) {
+      const pageElement = (
+        <Page isFullPage={route.isFullPage} breadcrumbs={currentBreadcrumb}>
+          <Component />
+        </Page>
+      );
+
+      const element = meta?.requiresAuth ? (
+        <ProtectedRoute requiresAdmin={meta?.requiresAdmin}>
+          {pageElement}
+        </ProtectedRoute>
+      ) : (
+        pageElement
+      );
+
       return (
         <Route
           key={index}
           path={currentPath}
-          element={
-            <Page isFullPage={route.isFullPage} breadcrumbs={currentBreadcrumb}>
-              <Component />
-            </Page>
-          }
+          element={element}
         />
       );
     }

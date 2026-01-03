@@ -12,6 +12,8 @@ export interface IRouter {
     Icon?: React.FC;
     hidden?: boolean;
     single?: boolean;
+    requiresAuth?: boolean;
+    requiresAdmin?: boolean;
   };
   children?: IRouter[];
 }
@@ -35,6 +37,7 @@ const routes: IRouter[] = [
     meta: {
       title: 'Home Page',
       Icon: SlHome,
+      requiresAuth: true,
     },
   },
   {
@@ -43,6 +46,7 @@ const routes: IRouter[] = [
     meta: {
       title: 'Dashboard',
       Icon: SlSpeedometer,
+      requiresAuth: true,
     },
   },
   {
@@ -51,6 +55,7 @@ const routes: IRouter[] = [
     meta: {
       title: 'Setting',
       Icon: SlWrench,
+      requiresAuth: true,
     },
   },
   {
@@ -59,6 +64,7 @@ const routes: IRouter[] = [
     meta: {
       title: 'Profile',
       Icon: SlPeople,
+      requiresAuth: true,
     },
   },
   {
@@ -67,6 +73,8 @@ const routes: IRouter[] = [
     meta: {
       title: 'Admin Dashboard',
       Icon: SlSettings,
+      requiresAuth: true,
+      requiresAdmin: true,
     },
   },
 ];

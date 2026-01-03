@@ -29,7 +29,17 @@ export default memo(() => {
   };
 
   const handleLogout = async () => {
-    localStorage.removeItem('username'); // Clear session
+    const currentUsername = localStorage.getItem('username');
+
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+
+    if (currentUsername) {
+      localStorage.removeItem(`loginHistory_${currentUsername}`);
+    }
+
+    localStorage.removeItem('detectionThreshold');
+
     await dispatch(logout());
     navigate('/login');
   };
