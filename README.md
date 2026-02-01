@@ -10,15 +10,14 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Available Scripts](#available-scripts)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [Related Projects](#related-projects)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
+- [Backend](#-backend)
+- [License](#-license)
+- [Authors](#-authors)
 
 ## 🌟 Overview
 
@@ -261,7 +260,7 @@ API endpoints are configured in:
 - `src/services/` - Service layer with Axios instances
 - Backend URL: `http://localhost:8080/api/v1/`
 
-## 🔗 Related Projects
+## 🔗 Backend
 
 - **Backend API**: [Five Course Bird Feeder API](https://github.com/arunike/CS506-API)
 - **Course**: COMP SCI 506 - Software Engineering
@@ -273,13 +272,6 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 ## 👥 Authors
 
 - **COMP SCI 506 Team**
-
-## 🙏 Acknowledgments
-
-- Ant Design team for the excellent UI framework
-- TensorFlow.js for browser-based ML capabilities
-- ECharts for powerful data visualization
-- All contributors and testers
 
 ---
 
